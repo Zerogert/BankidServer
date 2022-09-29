@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Bankid.Data;
 using Bankid.Interfaces;
 using Bankid.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -21,6 +20,9 @@ namespace Bankid.Controllers {
         [Route("/api/courses")]
         public async Task<IActionResult> GetAllAsync() {
             var courses = await DbContext.Courses.AsQueryable().OrderBy(x => x.Title).ToListAsync();
+            if (_currentUser.Role != Role.AdminRoleName) {
+                courses = courses.Where(x => !x.OnlyAdmin).ToList();
+            }
             return Ok(courses);
         }
 

@@ -9,6 +9,7 @@ namespace Bankid.Models.Entities {
         public string Description { get; set; }
         public int AuthorId { get; set; }
         public string Html { get; set; }
+        public bool OnlyAdmin { get; set; }
 
         public User Author { get; set; }
     }

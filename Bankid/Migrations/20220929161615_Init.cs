@@ -171,7 +171,8 @@ namespace Bankid.Migrations
                     Title = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     AuthorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Html = table.Column<string>(type: "TEXT", nullable: true)
+                    Html = table.Column<string>(type: "TEXT", nullable: true),
+                    OnlyAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

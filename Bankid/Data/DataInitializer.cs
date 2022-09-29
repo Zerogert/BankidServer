@@ -33,7 +33,7 @@ namespace Bankid.Data {
                         }
                     }
                     try {
-                        var user = new Models.Entities.User() { UserName = "admin", Role = Role.AdminRoleName };
+                        var user = new Models.Entities.User() { UserName = "admin", Role = Role.AdminRoleName, FirstName = "Иван", LastName = "Федорович" };
                         var result = await userManager.CreateAsync(user, "admin");
                         if (result.Succeeded) {
                             await userManager.AddToRoleAsync(user, Role.AdminRoleName);

@@ -1,0 +1,16 @@
+[Unit]  
+Description=Api Achieve Me Server .NET Web Application 
+ 
+[Service]  
+WorkingDirectory=/home/BankidServer/Bankid/bin/Debug/net6.0
+ExecStart=/usr/bin/dotnet /home/BankidServer/Bankid/bin/Debug/net6.0/Bankid.dll
+Restart=always  
+RestartSec=10  
+KillSignal=SIGINT
+SyslogIdentifier=api-achieve-me  
+User=root 
+Environment=ASPNETCORE_ENVIRONMENT=Production  
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=true
+Environment=ASPNETCORE_URLS=https://localhost:7151/;http://localhost:7150
+[Install]  
+WantedBy=multi-user.target  

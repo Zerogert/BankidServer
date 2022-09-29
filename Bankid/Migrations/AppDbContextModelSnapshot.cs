@@ -37,6 +37,9 @@ namespace Bankid.Migrations
                     b.Property<string>("Html")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("OnlyAdmin")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 

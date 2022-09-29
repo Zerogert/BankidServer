@@ -10,6 +10,8 @@ namespace Bankid.Services {
         public bool IsAuth => _contextAccessor?.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
 
         public string Role => _contextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Role);
+        public string FirstName => _contextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.GivenName);
+        public string LastName => _contextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
 
         public CurrentUserResolver(IHttpContextAccessor httpContextAccessor) {
             _contextAccessor = httpContextAccessor;

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bankid.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220929071015_Init")]
+    [Migration("20220929161615_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,9 @@ namespace Bankid.Migrations
 
                     b.Property<string>("Html")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("OnlyAdmin")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");

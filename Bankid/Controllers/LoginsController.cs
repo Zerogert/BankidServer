@@ -42,7 +42,7 @@ namespace Bankid.Controllers {
         [HttpPost]
         [Route("/api/login/create")]
         public async Task<IActionResult> CreateAsync(UserLogin login) {
-            var user = new Models.Entities.User() { UserName = login.Login, Role = Role.UserRoleName };
+            var user = new Models.Entities.User() { UserName = login.Login, Role = Role.UserRoleName, FirstName = login.FirstName, LastName = login.LastName };
             var result = await _userManager.CreateAsync(user, login.Password);
             if (result.Succeeded) {
                 await _userManager.AddToRoleAsync(user, Role.UserRoleName);
