@@ -44,7 +44,7 @@ namespace Bankid {
             });
 
             services.AddScoped<ICurrentUser, CurrentUserResolver>();
-
+            services.AddAntiforgery(o => o.SuppressXFrameOptionsHeader = true);
 
             services.AddIdentityCore<User>()
                 .AddRoles<Role>()

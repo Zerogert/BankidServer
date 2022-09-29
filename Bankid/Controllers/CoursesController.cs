@@ -2,8 +2,11 @@
 using Bankid.Data;
 using Bankid.Interfaces;
 using Bankid.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Bankid.Controllers {
@@ -14,11 +17,21 @@ namespace Bankid.Controllers {
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("/api/courses")]
         public async Task<IActionResult> GetAllAsync() {
-            var courses = await DbContext.Courses.ToListAsync();
+            var courses = await DbContext.Courses.AsQueryable().OrderBy(x => x.Title).ToListAsync();
             return Ok(courses);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("/api/courses/{courseId}")]
+        public async Task<IActionResult> Get(int courseId) {
+            var course = await DbContext.Courses.FindAsync(courseId);
+            return Content(course.Html, "text/html", Encoding.UTF8);
+        }
+
 
 
         [HttpDelete]
